@@ -1,3 +1,0 @@
-module ChristmasShopping
-  VERSION = "0.1.0"
-end
