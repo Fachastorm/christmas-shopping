@@ -5,6 +5,6 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
-use GifteeController
+use GifteesController
 use UsersController
 run ApplicationController

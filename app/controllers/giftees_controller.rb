@@ -1,16 +1,15 @@
-require 'pry'
-
-class GifteeController < ApplicationController
+class GifteesController < ApplicationController
 
 
 get '/giftees' do
   if logged_in?
   @giftees = Giftee.all
-erb :'/giftees/index'
-else
+  erb :'/giftees/index'
+  else
   redirect to '/login'
 end
 
+end
 get '/giftees/new' do
     if logged_in?
       erb :'giftees/new'
@@ -20,10 +19,11 @@ get '/giftees/new' do
   end
 
 post '/giftees' do
-    if @giftee = current_user.giftees.create(params)
+  if params[:name] || params[:gift] == ""
+    redirect to '/giftees/new'
+  else
+    @giftee = current_user.giftees.create(params)
       redirect to ("/giftees/#{@giftee.id}")
-    else
-      redirect to '/giftees/new'
     end
   end
 
@@ -48,8 +48,6 @@ get '/giftees/:id/edit' do
   else
     redirect to '/giftees'
   end
-end
-
 end
 
 end
