@@ -1,20 +1,23 @@
-class GifteeController < ActiveRecord::Base
+require 'pry'
+
+class GifteeController < ApplicationController
+
 
 get '/giftees' do
   if logged_in?
-  @giftee = Giftee.all
+  @giftees = Giftee.all
 erb :'/giftees/index'
 else
   redirect to '/login'
 end
 
 get '/giftees/new' do
-  if logged_in?
-    erb :'/giftees/new'
-  else
-    redirect to '/login'
+    if logged_in?
+      erb :'giftees/new'
+    else
+      redirect to '/login'
+    end
   end
-end
 
 post '/giftees' do
     if @giftee = current_user.giftees.create(params)
