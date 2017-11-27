@@ -1,0 +1,9 @@
+<h1>Welcome <%= @user.name %></h1>
+<h2>Here are all the people receiving gifts from you!</h2>
+
+
+<%@user.giftees.each do |giftee|%>
+<%= giftee.name %>
+<%end%>
+
+<a href="/logout">Logout</a>

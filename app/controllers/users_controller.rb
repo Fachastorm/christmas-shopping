@@ -10,11 +10,12 @@ get '/signup' do
 end
 
 post '/signup' do
-  @user = User.create(params)
+  if @user = User.create(params)
   session[:user_id] = @user.id
   redirect to '/giftees'
 else
   redirect to '/signup'
+end
 end
 
 get '/login' do
