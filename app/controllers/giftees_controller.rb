@@ -49,4 +49,22 @@ get '/giftees/:id/edit' do
   end
 end
 
+patch '/giftees/:id' do
+    @giftee = Giftee.find_by(params[:id])
+  if @giftee.update(:name => params[:name], :gift => params[:gift])
+    redirect to "/giftees/#{@giftee.id}"
+  else
+    redirect to "/giftees/#{params[:id]}/edit"
+  end
+end
+
+delete '/giftees/delete' do
+  @giftee = Giftee.find_by(params[:id])
+  if logged_in? && @giftee.user_id = current_user.id
+    @giftee.delete
+  else
+    redirect to '/giftees'
+  end
+end
+
 end
