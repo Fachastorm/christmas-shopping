@@ -1,0 +1,11 @@
+<h1>Edit a gift recipient:</h1>
+
+<form action="/giftees/<%= @giftee.id %>" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+<input type="text" name="name" value="<%= @giftee.name %>" placeholder="Name:">
+<input type="text" name="giftee" value="<%= @giftee.gift" placeholder="Gift">
+<input type="submit" name="submit" value="submit">
+</form>
+
+<a href="/giftee/new">Add another giftee</a>
+<a href="/giftees">View all your gift recipients</a>

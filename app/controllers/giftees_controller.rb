@@ -3,14 +3,14 @@ class GifteeController < ActiveRecord::Base
 get '/giftees' do
   if logged_in?
   @giftee = Giftee.all
-erb :'giftees/index'
+erb :'/giftees/index'
 else
   redirect to '/login'
 end
 
 get '/giftees/new' do
   if logged_in?
-    erb :'giftees/new'
+    erb :'/giftees/new'
   else
     redirect to '/login'
   end
@@ -28,7 +28,7 @@ get '/giftees/:id' do
   if logged_in?
     @giftee = Giftee.find_by(params[:id])
     if @giftee.user_id = current_user.id
-      erb :'giftees/show'
+      erb :'/giftees/show'
     else
       redirect to '/giftees'
     end
@@ -41,7 +41,7 @@ get '/giftees/:id/edit' do
   @giftee = Giftee.find_by(params[:id])
   if logged_in?
     @giftee.user_id = current_user.id
-    erb :'giftees/edit'
+    erb :'/giftees/edit'
   else
     redirect to '/giftees'
   end
