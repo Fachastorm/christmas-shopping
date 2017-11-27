@@ -37,5 +37,17 @@ get '/giftees/:id' do
   end
 end
 
+get '/giftees/:id/edit' do
+  @giftee = Giftee.find_by(params[:id])
+  if logged_in?
+    @giftee.user_id = current_user.id
+    erb :'giftees/edit'
+  else
+    redirect to '/giftees'
+  end
+end
+
+
+
 
 end
