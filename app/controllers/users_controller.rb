@@ -27,7 +27,7 @@ get '/login' do
 end
 
 post '/login' do
-  user = User.find_by(params[:username])
+  user = User.find_by(params[:name])
   if user && user.authenticate(params[:password])
     session[:user_id] = user.id
     redirect to '/giftees'
