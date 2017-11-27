@@ -1,8 +1,11 @@
-<h1>Here are all recipients of gifts</h1>
+<h1>Here are all recipients of gifts, <%= current_user.name %> </h1>
 
 <% @giftees.each do |giftee| %>
-<%= giftee.name %>
+<%if giftee.user_id == current_user.id %>
+<li><a href="/giftees/<%=giftee.id%>"><%= giftee.name %></a></li>
+<%else%><li>You can't see these gifts</li>
+<%end%>
 <%end%>
 
-
-<a href="/giftees/new">Create a new recipient for your gift!</a>
+<a href="/giftees/new">Create a new recipient for your gift!</a><br>
+<a href="/logout">Log out</a>

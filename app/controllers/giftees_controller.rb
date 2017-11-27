@@ -19,11 +19,10 @@ get '/giftees/new' do
   end
 
 post '/giftees' do
-  if params[:name] || params[:gift] == ""
-    redirect to '/giftees/new'
-  else
-    @giftee = current_user.giftees.create(params)
+  if @giftee = current_user.giftees.create(:name => params[:name], :gift => params[:gift])
       redirect to ("/giftees/#{@giftee.id}")
+    else
+      redirect to '/giftees/new'
     end
   end
 
