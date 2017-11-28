@@ -4,20 +4,7 @@ Welcome to the Chrismtas Shopping app. This app will allow you to create a chris
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'christmas_shopping'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install christmas_shopping
-
+Simply clone this repository and run 'bundle install'. Afterwards, run 'shotgun' and enjoy the app!
 
 ## Contributing
 
