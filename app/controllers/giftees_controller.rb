@@ -28,8 +28,8 @@ post '/giftees' do
 
 get '/giftees/:id' do
   if logged_in?
-    @giftee = Giftee.find_by(params[:id])
-    if @giftee.user_id = current_user.id
+    @giftee = Giftee.find_by_id(params[:id])
+    if @giftee.user_id == current_user.id
       erb :'/giftees/show'
     else
       redirect to '/giftees'
@@ -40,9 +40,9 @@ get '/giftees/:id' do
 end
 
 get '/giftees/:id/edit' do
-  @giftee = Giftee.find_by(params[:id])
+  @giftee = Giftee.find_by_id(params[:id])
   if logged_in?
-    @giftee.user_id = current_user.id
+    @giftee.user_id == current_user.id
     erb :'/giftees/edit'
   else
     redirect to '/giftees'
@@ -50,7 +50,7 @@ get '/giftees/:id/edit' do
 end
 
 patch '/giftees/:id' do
-    @giftee = Giftee.find_by(params[:id])
+    @giftee = Giftee.find_by_id(params[:id])
   if @giftee.update(:name => params[:name], :gift => params[:gift])
     redirect to "/giftees/#{@giftee.id}"
   else
@@ -58,10 +58,11 @@ patch '/giftees/:id' do
   end
 end
 
-delete '/giftees/delete' do
-  @giftee = Giftee.find_by(params[:id])
-  if logged_in? && @giftee.user_id = current_user.id
+delete '/giftees/:id/delete' do
+  @giftee = Giftee.find_by_id(params[:id])
+  if logged_in? && @giftee.user_id == current_user.id
     @giftee.delete
+    redirect to '/giftees'
   else
     redirect to '/giftees'
   end

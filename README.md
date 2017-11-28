@@ -1,8 +1,6 @@
 # ChristmasShopping
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/christmas_shopping`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to the Chrismtas Shopping app. This app will allow you to create a christams list so you can keep track of everyone you are buying gifts for. The app allows you to see your list of people as well as the gifts you are getting them. It also shows you ALL the people who are getting gifts, but they are anonymous as you can't see what other people are getting as gifts either!
 
 ## Installation
 
@@ -20,15 +18,6 @@ Or install it yourself as:
 
     $ gem install christmas_shopping
 
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 

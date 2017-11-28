@@ -1,5 +1,7 @@
-class UsersController < ApplicationController
+require 'rack-flash'
 
+class UsersController < ApplicationController
+use Rack::Flash
 
 get '/signup' do
   if !logged_in?
@@ -10,11 +12,12 @@ get '/signup' do
 end
 
 post '/signup' do
-  if @user = User.create(params)
+  if params[:name].empty? || params[:password].empty?
+  flash[:message] = "Please enter a username and password"
+  redirect to '/signup'
+  else @user = User.create(params)
   session[:user_id] = @user.id
   redirect to '/giftees'
-else
-  redirect to '/signup'
 end
 end
 
@@ -27,11 +30,12 @@ get '/login' do
 end
 
 post '/login' do
-  user = User.find_by(params[:name])
-  if user && user.authenticate(params[:password])
+    user = User.find_by(:name => params[:name])
+    if user && user.authenticate(params[:password])
     session[:user_id] = user.id
     redirect to '/giftees'
-  else
+    else params[:name].empty? || params[:password].empty?
+    flash[:message] = "Please enter a username and password"
     redirect to '/login'
   end
 end

@@ -1,6 +1,11 @@
 <h1>Giftee: <%= @giftee.name%></h1><br>
 <h2>Gift: <%= @giftee.gift%></h2>
 
+<form action="/giftees/<%=@giftee.id%>/delete" method="post">
+ <input id='hidden' type= 'hidden' name='_method' value='DELETE'>
+ <input type="submit" value="Delete Entry">
+</form>
+
 <a href="/giftees">Back to list</a><br>
 <a href="/giftees/new">Add another person!</a><br>
 <a href="/giftees/<%=@giftee.id%>/edit">Edit this entry!</a>

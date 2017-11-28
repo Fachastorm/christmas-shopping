@@ -4,7 +4,7 @@
 <% @giftees.each do |giftee| %>
 <%if giftee.user_id == current_user.id %>
 <li><a href="/giftees/<%=giftee.id%>"><%= giftee.name %></a></li>
-<%else%><li>You can't see these gifts!</li>
+<%else%><li>Anonymous!</li>
 <%end%>
 <%end%>
 </ol>
